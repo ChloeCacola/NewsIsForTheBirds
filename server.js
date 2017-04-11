@@ -3,6 +3,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var request = require('request');
 var cheerio = require('cheerio');
+var exphbs = require("express-handlebars");
 //models
 var Article = require('./models/Article.js');
 var Comment = require('./models/Comment.js');
@@ -13,6 +14,10 @@ mongoose.Promise = Promise;
 
 //initialize express
 var app = express();
+
+//handlebars settings
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 
 //db config with mongoose
@@ -29,8 +34,38 @@ app.get("/", function(req, res) {
 	res.send("this works");
 });
 
+//routes
+app.get("/all", function(req,res) {
 
-//more routes below..
+	request("http://www.audubon.org/news/birds-news", function(err, response, html){
+
+		var $ = cheerio.load(html);
+
+		$("h4.editorial-card-title").each(function(i, element) {
+			//result object for storing scraped data
+			var result = {};
+
+			result.title = $(element).text();
+			// result.url = $(element).children().attr("href");
+
+			//new article using Article model and result object
+			var article = new Article(result);
+
+			//save article to db
+			article.save(function(err, doc) {
+				if(err) {
+					console.log(err);
+				}
+				else {
+					console.log(doc);
+				}
+			});
+		});
+	});
+	console.log("scrape success");
+});
+
+
 
 // Listen on port 3000
 app.listen(3000, function() {

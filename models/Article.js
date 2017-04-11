@@ -10,9 +10,6 @@ var ArticleSchema = new Schema({
 		type: String,
 		unique: true
 	},
-	url: {
-		type: mongoose.SchemaTypes.Url
-	},
 	commments: [{
 		text: String,
 		postedBy: {
