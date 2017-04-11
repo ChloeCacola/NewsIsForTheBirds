@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+require('mongoose-type-url');
 
 //create class
 var Schema = mongoose.Schema;
@@ -6,7 +7,11 @@ var Schema = mongoose.Schema;
 //create Article schema
 var ArticleSchema = new Schema({
 	title: {
-		type: String
+		type: String,
+		unique: true
+	},
+	url: {
+		type: mongoose.SchemaTypes.Url
 	},
 	commments: [{
 		text: String,

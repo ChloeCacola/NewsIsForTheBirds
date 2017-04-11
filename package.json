@@ -28,6 +28,7 @@
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.9.3",
+    "mongoose-type-url": "^1.0.2",
     "request": "^2.81.0"
   }
 }

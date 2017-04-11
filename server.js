@@ -3,6 +3,13 @@ var express = require('express');
 var mongoose = require('mongoose');
 var request = require('request');
 var cheerio = require('cheerio');
+//models
+var Article = require('./models/Article.js');
+var Comment = require('./models/Comment.js');
+var User = require('./models/User.js');
+
+//leverage built in js es6 promises
+mongoose.Promise = Promise;
 
 //initialize express
 var app = express();
