@@ -1,0 +1,33 @@
+{
+  "name": "newsisforthebirds",
+  "version": "1.0.0",
+  "description": "using cheerio, mongoose and mongodb to srape and display articles from audubon.org",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChloeCacola/NewsIsForTheBirds.git"
+  },
+  "keywords": [
+    "birds",
+    "bird",
+    "news",
+    "audubon"
+  ],
+  "author": "Chloe Corrigan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChloeCacola/NewsIsForTheBirds/issues"
+  },
+  "homepage": "https://github.com/ChloeCacola/NewsIsForTheBirds#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.9.3",
+    "request": "^2.81.0"
+  }
+}
