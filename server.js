@@ -40,7 +40,7 @@ app.get("/", function(req, res) {
 });
 
 //routes
-app.get("/all", function(req,res) {
+app.get("/", function(req,res) {
 
 	request("http://www.audubon.org/news/birds-news", function(err, response, html){
 
@@ -68,6 +68,17 @@ app.get("/all", function(req,res) {
 		});
 	});
 	console.log("scrape success");
+});
+
+app.get("/all", function(req, res) {
+	Article.find({}, function(error, doc) {
+		if(error) {
+			console.log(error);
+		}
+		else {
+			res.json(doc);
+		}
+	});
 });
 
 
