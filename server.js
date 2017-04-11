@@ -8,6 +8,8 @@ var exphbs = require("express-handlebars");
 var Article = require('./models/Article.js');
 var Comment = require('./models/Comment.js');
 var User = require('./models/User.js');
+//port
+var PORT = 3000;
 
 //leverage built in js es6 promises
 mongoose.Promise = Promise;
@@ -18,6 +20,9 @@ var app = express();
 //handlebars settings
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+//public folder
+app.use(express.static("public"));
 
 
 //db config with mongoose
@@ -31,7 +36,7 @@ db.once('open', function() {
 
 //main route 
 app.get("/", function(req, res) {
-	res.send("this works");
+	res.render("index");
 });
 
 //routes
@@ -68,6 +73,6 @@ app.get("/all", function(req,res) {
 
 
 // Listen on port 3000
-app.listen(3000, function() {
-  console.log("App running on port 3000");
+app.listen(PORT, function() {
+  console.log("App running on" + PORT);
 });
