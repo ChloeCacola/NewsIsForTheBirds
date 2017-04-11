@@ -14,7 +14,7 @@ mongoose.connect("mongodb://localhost/forthebirds");
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', function() {
-	console.log("success");
+	console.log("mongoose success");
 })
 
 //main route 
@@ -27,5 +27,5 @@ app.get("/", function(req, res) {
 
 // Listen on port 3000
 app.listen(3000, function() {
-  console.log("App running on port 3000!");
+  console.log("App running on port 3000");
 });
