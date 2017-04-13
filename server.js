@@ -128,8 +128,19 @@ app.post("/submit", function(req, res) {
 					}
 					else {
 						res.send(newdoc);
+							//get new article comments..
+							Article.find({}, function(error, doc) {
+							if(error) {
+								console.log(error);
+							}
+							
+							// res.json(doc);
+							titles = doc
+									
+								});
 					}
-				});
+
+	});
 		}
 	});
 
