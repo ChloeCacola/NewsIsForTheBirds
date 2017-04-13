@@ -1,25 +1,26 @@
 var modal = document.getElementById("commentModal");
-var add = document.getElementsByClassName("addCom");
 var span = document.getElementsByClassName("close")[0];
-modal.style.display = "none";
 
 $(".articleinfo").hide();
 
-$("#getNews").on("click", function(){
-console.log("clicked");
-	$.getJSON("/all", function(news) {
+$.getJSON("/all", function(news) {
+	$("#getNews").on("click", function(){
+	console.log("clicked");
+	$(".articleinfo").show();
 
 		for (var i=0; i<news.length; i++) {
-		console.log(news[i].title);
-		$(".articleinfo").show();
-		//append news..
-	}
+			console.log(news[i].title);
+			
+			//append news..
+		}
 	});
 });
 
-  add.onclick = function() {
-    modal.style.display = "block";
-  }
+  $(".addCom").on("click", function() {
+  	console.log("comment");
+  	$("#commentModal").show();
+  });
+  
 
   //When user clicks on <span> x, close the modal
   span.onclick = function() {
