@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-require('mongoose-type-url');
 
 //create class
 var Schema = mongoose.Schema;
@@ -10,13 +9,11 @@ var ArticleSchema = new Schema({
 		type: String,
 		unique: true
 	},
-	commments: [{
-		text: String,
-		postedBy: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "User"
-		}
-    }]
+	//attached comments to article with ref to Comment model
+	comments: [{
+		type: Schema.Types.ObjectId,
+		ref: "Comment"
+	}]
 });
 
 //create model

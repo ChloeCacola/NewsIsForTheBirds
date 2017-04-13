@@ -10,12 +10,7 @@ var UserSchema = new Schema({
 	name: {
 		type: String,
 		unique: true
-	},
-	//attached comments to user with ref to Comment model
-	comments: [{
-		type: Schema.Types.ObjectId,
-		ref: "Comment"
-	}]
+	}
 });
 
 //create user model

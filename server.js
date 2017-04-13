@@ -1,5 +1,6 @@
 //dependencies
 var express = require('express');
+var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 var request = require('request');
 var cheerio = require('cheerio');
@@ -11,11 +12,19 @@ var User = require('./models/User.js');
 //port
 var PORT = 3000;
 
+//titles
+var titles={};
+
 //leverage built in js es6 promises
 mongoose.Promise = Promise;
 
 //initialize express
 var app = express();
+
+//use body parser
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 //handlebars settings
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -34,13 +43,32 @@ db.once('open', function() {
 	console.log("mongoose success");
 })
 
-//main route 
-app.get("/", function(req, res) {
-	res.render("index");
+//TEST USER(set to unique in models)
+var testUser = new User({
+	name: "George Bird Grinnell"
 });
 
-//routes
-app.get("/", function(req,res) {
+testUser.save(function(err, doc) {
+	if(err) {
+		console.log(err);
+	}
+	else {
+		console.log(doc);
+	}
+});
+
+
+//------
+//ROUTES
+//------
+//rendering to handlebars file
+app.get("/", function(req, res) {
+	JSON.stringify(titles);
+	res.render("index", {titles});
+});
+
+//scraping data with cheerio
+app.get("/s", function(req,res) {
 
 	request("http://www.audubon.org/news/birds-news", function(err, response, html){
 
@@ -70,6 +98,7 @@ app.get("/", function(req,res) {
 	console.log("scrape success");
 });
 
+//find all articles
 app.get("/all", function(req, res) {
 	Article.find({}, function(error, doc) {
 		if(error) {
@@ -77,6 +106,46 @@ app.get("/all", function(req, res) {
 		}
 		else {
 			res.json(doc);
+			titles = doc
+		}
+	});
+
+});
+
+
+//create a comment w/POST route
+app.post("/submit", function(req, res) {
+	//using comment model to make new note
+	var newComment = new Comment(req.body);
+	//save comment to mongoose
+	newComment.save(function(err, doc) {
+		if(err) {
+			res.send(err);
+		}
+		else {
+			Article.findOneAndUpdate({}, {$push: {"comments": doc._id}},
+				{new: true}, function(err, newdoc) {
+					if(err) {
+						res.send(err);
+					}
+					else {
+						res.send(newdoc);
+					}
+				});
+		}
+	});
+
+});
+
+//test to see comments
+app.get("/pop", function(req, res) {
+	Article.find({}).populate("comments")
+	.exec(function(err, doc) {
+		if(err) {
+			res.send(err);
+		}
+		else {
+			res.send(doc);
 		}
 	});
 });

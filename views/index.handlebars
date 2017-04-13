@@ -1,3 +1,22 @@
 <button id="getNews">Get News</button>
+<ul class="articleinfo">
+  {{#each titles}}
+  	<li>
+  		<p>{{title}}</p>
+  		<p>Comments: {{comments}}<br>
+  		<button class="addCom">add comment</button>
+  	</li>
+  {{/each}}
+</ul>
 
+<div id="commentModal" class="modal">
+  <span class="close">&times;</span>
+  <form action="/submit" method="post">
+    {{!-- <h3>Opinion?</h3> --}}
+    <h5>Comment..</h5>
+      <textarea type="text" name="comment"></textarea>
+      <br>
+      <button type="submit" class="subBtn">Comment</button></p>
+  </form>
+</div>{{!-- end modal --}}
 <script src="/js/app.js"></script>
