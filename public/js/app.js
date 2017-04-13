@@ -3,18 +3,17 @@ var span = document.getElementsByClassName("close")[0];
 
 $(".articleinfo").hide();
 
-$.getJSON("/all", function(news) {
-	$("#getNews").on("click", function(){
-	console.log("clicked");
+// $.getJSON("/all", function(news) {
+$("#getNews").on("click", function(){
 	$(".articleinfo").show();
-
-		for (var i=0; i<news.length; i++) {
-			console.log(news[i].title);
+	console.log("clicked");
+		// for (var i=0; i<news.length; i++) {
+		// 	console.log(news[i].title);
 			
-			//append news..
-		}
+		// 	//append news..
+		// }
 	});
-});
+// });
 
   $(".addCom").on("click", function() {
   	console.log("comment");

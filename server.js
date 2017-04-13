@@ -63,7 +63,6 @@ testUser.save(function(err, doc) {
 //------
 //rendering to handlebars file
 app.get("/", function(req, res) {
-	JSON.stringify(titles);
 	res.render("index", {titles});
 });
 
@@ -99,18 +98,17 @@ app.get("/s", function(req,res) {
 });
 
 //find all articles
-app.get("/all", function(req, res) {
+// app.get("/all", function(req, res) {
 	Article.find({}, function(error, doc) {
 		if(error) {
 			console.log(error);
 		}
-		else {
-			res.json(doc);
-			titles = doc
-		}
+		
+		// res.json(doc);
+		titles = doc
 	});
 
-});
+// });
 
 
 //create a comment w/POST route
