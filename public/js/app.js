@@ -17,6 +17,7 @@ $("#getNews").on("click", function(){
 
   $(".addCom").on("click", function() {
   	console.log("comment");
+  	
   	$("#commentModal").show();
   });
   

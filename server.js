@@ -96,17 +96,22 @@ request("http://www.audubon.org/news/birds-news", function(err, response, html){
 	
 
 //find all articles
-// app.get("/all", function(req, res) {
 	Article.find({}, function(error, doc) {
 		if(error) {
 			console.log(error);
 		}
-		
-		// res.json(doc);
-		titles = doc
 	});
 
-// });
+//populate comments; save titles object so that we can see comments..
+	Article.find({}).populate("comments")
+	.exec(function(err, doc) {
+		if(err) {
+			res.send(err);
+		}
+		else {
+			titles = doc
+		}
+	});
 
 
 //create a comment w/POST route
@@ -141,21 +146,11 @@ app.post("/submit", function(req, res) {
 	});
 		}
 	});
-
+	// res.redirect("/");
 });
 
-//test to see comments
-app.get("/pop", function(req, res) {
-	Article.find({}).populate("comments")
-	.exec(function(err, doc) {
-		if(err) {
-			res.send(err);
-		}
-		else {
-			res.send(doc);
-		}
-	});
-});
+
+
 
 
 

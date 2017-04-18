@@ -3,7 +3,7 @@
   {{#each titles}}
   	<li>
   		<p>{{title}}</p>
-  		<p>Comments: {{comments}}<br>
+  		<p>Comments: <br>{{#each comments}}<br>{{date}}<br>{{comment}}<br>{{/each}}<br>
   		<button class="addCom">add comment</button>
   	</li>
   {{/each}}
