@@ -63,8 +63,30 @@ testUser.save(function(err, doc) {
 //------
 //rendering to handlebars file
 app.get("/", function(req, res) {
+
 	res.render("index", {titles});
 });
+
+	//find all articles
+	Article.find({}, function(error, doc) {
+		if(error) {
+			console.log(error);
+		}
+
+		
+	});
+
+
+//populate comments; save titles object so that we can see comments..
+	Article.find({}).populate("comments")
+	.exec(function(err, doc) {
+		if(err) {
+			res.send(err);
+		}
+		else {
+			titles = doc
+		}
+	});
 
 //scraping data with cheerio
 request("http://www.audubon.org/news/birds-news", function(err, response, html){
@@ -93,29 +115,10 @@ request("http://www.audubon.org/news/birds-news", function(err, response, html){
 		});
 	console.log("scrape success");
 });
-	
-
-//find all articles
-	Article.find({}, function(error, doc) {
-		if(error) {
-			console.log(error);
-		}
-	});
-
-//populate comments; save titles object so that we can see comments..
-	Article.find({}).populate("comments")
-	.exec(function(err, doc) {
-		if(err) {
-			res.send(err);
-		}
-		else {
-			titles = doc
-		}
-	});
 
 
 //create a comment w/POST route
-app.post("/submit", function(req, res) {
+app.post("/submit/:id", function(req, res) {
 	//using comment model to make new note
 	var newComment = new Comment(req.body);
 	//save comment to mongoose
@@ -124,7 +127,7 @@ app.post("/submit", function(req, res) {
 			res.send(err);
 		}
 		else {
-			Article.findOneAndUpdate({}, {$push: {"comments": doc._id}},
+			Article.findOneAndUpdate({"id": req.params.id}, {$push: {"comments": doc._id}},
 				{new: true}, function(err, newdoc) {
 					if(err) {
 						res.send(err);

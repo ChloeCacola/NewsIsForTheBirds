@@ -17,10 +17,22 @@ $("#getNews").on("click", function(){
 
   $(".addCom").on("click", function() {
   	console.log("comment");
-  	
   	$("#commentModal").show();
   });
+
+//post comment to correct article
+  $(".subBtn").on("click", function() {
+  	var thisId = $(".subBtn").attr("data-id");
+
+  	$.ajax({
+  		method: "POST",
+  		url: "/submit/" + thisId
+  	});
+
+  })
   
+  //control what is submitted..
+  // $.post("/submit", )
 
   //When user clicks on <span> x, close the modal
   span.onclick = function() {

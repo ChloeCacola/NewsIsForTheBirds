@@ -3,22 +3,25 @@
   {{#each titles}}
   	<li>
   		<p>{{title}}</p>
-  		<p>Comments: <br>{{#each comments}}<br>{{date}}<br>{{comment}}<br>{{/each}}<br>
+  		<p>Comments: <br>{{#each comments}}<br>{{date}}<br>{{comment}}<button class="delCom" data-id="{{_id}}">X</button><br>{{/each}}<br>
+
   		<button class="addCom">add comment</button>
+
+  		<div id="commentModal" class="modal">
+		 <div class="modal-content">
+		  <span class="close">&times;</span>
+		  <form action="/submit" method="post">
+		    {{!-- <h3>Opinion?</h3> --}}
+		    <h5>Comment..</h5>
+		      <textarea type="text" name="comment"></textarea>
+		      <br>
+		      <button type="submit" class="subBtn" data-id="{{_id}}">Comment</button></p>
+		  </form>
+		 </div>
+		</div>{{!-- end modal --}}
   	</li>
   {{/each}}
 </ul>
 
-<div id="commentModal" class="modal">
- <div class="modal-content">
-  <span class="close">&times;</span>
-  <form action="/submit" method="post">
-    {{!-- <h3>Opinion?</h3> --}}
-    <h5>Comment..</h5>
-      <textarea type="text" name="comment"></textarea>
-      <br>
-      <button type="submit" class="subBtn">Comment</button></p>
-  </form>
- </div>
-</div>{{!-- end modal --}}
+
 <script src="/js/app.js"></script>
