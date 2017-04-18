@@ -67,11 +67,9 @@ app.get("/", function(req, res) {
 });
 
 //scraping data with cheerio
-app.get("/s", function(req,res) {
+request("http://www.audubon.org/news/birds-news", function(err, response, html){
 
-	request("http://www.audubon.org/news/birds-news", function(err, response, html){
-
-		var $ = cheerio.load(html);
+	var $ = cheerio.load(html);
 
 		$("h4.editorial-card-title").each(function(i, element) {
 			//result object for storing scraped data
@@ -93,9 +91,9 @@ app.get("/s", function(req,res) {
 				}
 			});
 		});
-	});
 	console.log("scrape success");
 });
+	
 
 //find all articles
 // app.get("/all", function(req, res) {
