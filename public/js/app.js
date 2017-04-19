@@ -1,5 +1,5 @@
-var modal = document.getElementById("commentModal");
-var span = document.getElementsByClassName("close")[0];
+// var modal = document.querySelector(".modal");
+
 
 $(".articleinfo").hide();
 
@@ -17,31 +17,46 @@ $("#getNews").on("click", function(){
 
   $(".addCom").on("click", function() {
   	console.log("comment");
-  	$("#commentModal").show();
+  	var articleId = $(this).data("id");
+  	var thisModal = $("[data-target=" + articleId +"]");
+
+  	$(thisModal).show();
+  	// $("#commentModal").show();
   });
 
 //post comment to correct article
-  $(".subBtn").on("click", function() {
+  $(".subBtn").on("click", function(e) {
+  	// e.preventDefault();
   	var thisId = $(".subBtn").attr("data-id");
+  	var comment = $(this).parent().children("textarea").val()
 
-  	$.ajax({
-  		method: "POST",
-  		url: "/submit/" + thisId
-  	});
+  	// $.ajax({
+  	// 	method: "POST",
+  	// 	url: "/submit/" + thisId,
+  	// 	body: {
+  	// 		comment
+  	// 	}
+  	// }).done(function() {
+  	// 	console.log("working");
+  	// });
 
-  })
+  });
   
   //control what is submitted..
   // $.post("/submit", )
 
   //When user clicks on <span> x, close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
+  // $(document).on("click", "span", function() {
+  //   modal.style.display = "none";
+  // });
+
+  $(".close").on("click", function() {
+  	$(".modal").hide();
+  })
 
   //When user clicks outside of modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+  // window.onclick = function(event) {
+  //   if (event.target == modal) {
+  //     modal.style.display = "none";
+  //   }
+  // }

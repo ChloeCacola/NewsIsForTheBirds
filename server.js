@@ -9,6 +9,10 @@ var exphbs = require("express-handlebars");
 var Article = require('./models/Article.js');
 var Comment = require('./models/Comment.js');
 var User = require('./models/User.js');
+
+//scrape
+var scrape = require("./controllers/scrape.js");
+
 //port
 var PORT = 3000;
 
@@ -64,20 +68,10 @@ testUser.save(function(err, doc) {
 //rendering to handlebars file
 app.get("/", function(req, res) {
 
-	res.render("index", {titles});
-});
-
-	//find all articles
-	Article.find({}, function(error, doc) {
-		if(error) {
-			console.log(error);
-		}
-
-		
-	});
+	scrape();
 
 
-//populate comments; save titles object so that we can see comments..
+	//populate comments; save titles object so that we can see comments..
 	Article.find({}).populate("comments")
 	.exec(function(err, doc) {
 		if(err) {
@@ -85,36 +79,20 @@ app.get("/", function(req, res) {
 		}
 		else {
 			titles = doc
+			res.render("index", {titles});
 		}
 	});
 
-//scraping data with cheerio
-request("http://www.audubon.org/news/birds-news", function(err, response, html){
 
-	var $ = cheerio.load(html);
+		
+	});
 
-		$("h4.editorial-card-title").each(function(i, element) {
-			//result object for storing scraped data
-			var result = {};
-
-			result.title = $(element).text();
-			// result.url = $(element).children().attr("href");
-
-			//new article using Article model and result object
-			var article = new Article(result);
-
-			//save article to db
-			article.save(function(err, doc) {
-				if(err) {
-					console.log(err);
-				}
-				else {
-					console.log(doc);
-				}
-			});
-		});
-	console.log("scrape success");
-});
+		//find all articles
+	Article.find({}, function(error, doc) {
+		if(error) {
+			console.log(error);
+		}
+	});
 
 
 //create a comment w/POST route
@@ -127,13 +105,14 @@ app.post("/submit/:id", function(req, res) {
 			res.send(err);
 		}
 		else {
-			Article.findOneAndUpdate({"id": req.params.id}, {$push: {"comments": doc._id}},
+			//THIS IS WHAT NEEDS TO BE UPDATED FOR ARTICLE TO REFER TO COMMENT
+			Article.findOneAndUpdate({"_id": req.params.id}, {$push: {"comments": doc._id}},
 				{new: true}, function(err, newdoc) {
 					if(err) {
 						res.send(err);
 					}
 					else {
-						res.send(newdoc);
+						res.redirect("/");
 							//get new article comments..
 							Article.find({}, function(error, doc) {
 							if(error) {

@@ -5,15 +5,15 @@
   		<p>{{title}}</p>
   		<p>Comments: <br>{{#each comments}}<br>{{date}}<br>{{comment}}<button class="delCom" data-id="{{_id}}">X</button><br>{{/each}}<br>
 
-  		<button class="addCom">add comment</button>
+  		<button class="addCom" data-id="{{_id}}">add comment</button>
 
-  		<div id="commentModal" class="modal">
+  		<div class="modal" data-target="{{_id}}">
 		 <div class="modal-content">
 		  <span class="close">&times;</span>
-		  <form action="/submit" method="post">
+		  <form action="/submit/{{_id}}" method="post">
 		    {{!-- <h3>Opinion?</h3> --}}
 		    <h5>Comment..</h5>
-		      <textarea type="text" name="comment"></textarea>
+		      <textarea type="text" name="comment" id="comment-body"></textarea>
 		      <br>
 		      <button type="submit" class="subBtn" data-id="{{_id}}">Comment</button></p>
 		  </form>
