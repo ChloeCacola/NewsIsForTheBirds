@@ -1,46 +1,25 @@
 // var modal = document.querySelector(".modal");
 
 
-$(".articleinfo").hide();
+$("#articleinfo").hide();
 
-// $.getJSON("/all", function(news) {
+//show the news
 $("#getNews").on("click", function(){
-	$(".articleinfo").show();
+	$("#articleinfo").show();
 	console.log("clicked");
-		// for (var i=0; i<news.length; i++) {
-		// 	console.log(news[i].title);
-			
-		// 	//append news..
-		// }
-	});
-// });
 
-  $(".addCom").on("click", function() {
+	});
+
+
+
+$(".addCom").on("click", function() {
   	console.log("comment");
   	var articleId = $(this).data("id");
   	var thisModal = $("[data-target=" + articleId +"]");
 
   	$(thisModal).show();
-  	// $("#commentModal").show();
-  });
+});
 
-//post comment to correct article
-  $(".subBtn").on("click", function(e) {
-  	// e.preventDefault();
-  	var thisId = $(".subBtn").attr("data-id");
-  	var comment = $(this).parent().children("textarea").val()
-
-  	// $.ajax({
-  	// 	method: "POST",
-  	// 	url: "/submit/" + thisId,
-  	// 	body: {
-  	// 		comment
-  	// 	}
-  	// }).done(function() {
-  	// 	console.log("working");
-  	// });
-
-  });
 
  //delete a comment
  $(document).on("click", ".delCom", function(e) {
@@ -62,7 +41,7 @@ $("#getNews").on("click", function(){
  		}
  	}).done(function() {
  		console.log("deleted");
- 		location.href="/";
+ 		location.href="/"
  	});
 
  });

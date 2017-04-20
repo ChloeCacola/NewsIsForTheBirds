@@ -51,8 +51,8 @@ li{
 }
 
 
-.articleinfo {
-
+#articleinfo {
+    
     position: absolute;
     top: 20%;
     left: 25%;

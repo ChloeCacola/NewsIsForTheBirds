@@ -2,13 +2,13 @@
 
 <container id="side-content">
 	<h2> Maybe in this case..<br>
-		<button id="getNews">Get my news.</button>
+		<button id="getNews" href="/mynews">Get my news.</button>
 	</h2>
 
 	<p id="ref">Articles scraped from Audubon.org with <a href="https://www.npmjs.com/package/cheerio">Cheerio</a></p>
 </container>
 
-<ul class="articleinfo">
+<ul id="articleinfo">
   {{#each titles}}
   	<li>
   		<h3 id="articleTitle" data-id="{{_id}}">{{title}}</h3>
