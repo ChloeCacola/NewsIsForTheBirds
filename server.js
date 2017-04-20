@@ -78,7 +78,7 @@ app.get("/", function(req, res) {
 	scrape();
 
 		//find all articles
-	Article.find({}, function(error, doc) {
+	Article.find({}).sort({"title": 1}).exec(function(error, doc) {
 		if(error) {
 			console.log(error);
 		}
@@ -87,7 +87,7 @@ app.get("/", function(req, res) {
 
 
 	//populate comments; save titles object so that we can see comments..
-	Article.find({}).populate("comments")
+	Article.find({}).sort({"title":1}).populate("comments")
 	.exec(function(err, doc) {
 		if(err) {
 			res.send(err);
@@ -97,6 +97,7 @@ app.get("/", function(req, res) {
 			res.render("index", {titles});
 		}
 	});
+
 
 
 		
