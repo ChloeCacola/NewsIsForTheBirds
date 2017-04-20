@@ -27,6 +27,7 @@ body {
 h1 {
      font-family: 'Cinzel', serif;
      position: absolute;
+     top: 1%;
      left: 1%;
      color: #111;
      font-size: 50px;
@@ -48,6 +49,11 @@ li{
     border: solid 4px #3c3639;
     margin: 20px;
     background: #8e8b85;
+}
+
+a {
+    text-decoration: none;
+    color: #fff5fe;
 }
 
 
@@ -72,7 +78,7 @@ li{
 #side-content {
 
     position: absolute;
-    top: 10%;
+    top: 12%;
     left: 2%;
     text-align: center;
 }

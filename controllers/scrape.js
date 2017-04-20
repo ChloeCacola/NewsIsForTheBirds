@@ -5,8 +5,9 @@ var Article = require('../models/Article.js');
 var Comment = require('../models/Comment.js');
 
 var scrape = function() {
+	audubon = "http://www.audubon.org/news/birds-news"
 	//scraping data with cheerio
-request("http://www.audubon.org/news/birds-news", function(err, response, html){
+request(audubon, function(err, response, html){
 
 	var $ = cheerio.load(html);
 
@@ -15,7 +16,7 @@ request("http://www.audubon.org/news/birds-news", function(err, response, html){
 			var result = {};
 
 			result.title = $(element).text();
-			// result.url = $(element).children().attr("href");
+			result.url = "http://www.audubon.org" + $(element).children().attr("href");
 
 			//new article using Article model and result object
 			var article = new Article(result);

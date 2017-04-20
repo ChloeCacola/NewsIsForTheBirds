@@ -9,6 +9,10 @@ var ArticleSchema = new Schema({
 		type: String,
 		unique: true
 	},
+	url: {
+		type: String,
+		unique: true
+	},
 	//attached comments to article with ref to Comment model
 	comments: [{
 		type: Schema.Types.ObjectId,
