@@ -18,18 +18,25 @@ request(audubon, function(err, response, html){
 			result.title = $(element).text();
 			result.url = "http://www.audubon.org" + $(element).children().attr("href");
 
-			//new article using Article model and result object
-			var article = new Article(result);
+			//if not in database..make article
+			Article.findOne({"title": result.title}, function(err, doc) {
+				if (!doc) {
+					//new article using Article model and result object
+					var article = new Article(result);
 
-			//save article to db
-			article.save(function(err, doc) {
-				if(err) {
-					console.log(err);
+					//save article to db
+					article.save(function(err, doc) {
+						if(err) {
+							console.log(err);
+						}
+						else {
+							console.log(doc);
+						}
+					});
+
 				}
-				else {
-					console.log(doc);
-				}
-			});
+			})
+
 		});
 	console.log("scrape success");
 });
