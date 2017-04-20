@@ -77,6 +77,14 @@ app.get("/", function(req, res) {
 
 	scrape();
 
+		//find all articles
+	Article.find({}, function(error, doc) {
+		if(error) {
+			console.log(error);
+		}
+			titles = doc;
+	});
+
 
 	//populate comments; save titles object so that we can see comments..
 	Article.find({}).populate("comments")
@@ -92,18 +100,6 @@ app.get("/", function(req, res) {
 
 
 		
-	});
-
-		//find all articles
-	Article.find({}, function(error, doc) {
-		if(error) {
-			console.log(error);
-		}
-		else {
-			var temp = {}
-			temp = doc
-			res.render("index", {temp} )
-		}
 	});
 
 
