@@ -99,6 +99,11 @@ app.get("/", function(req, res) {
 		if(error) {
 			console.log(error);
 		}
+		else {
+			var temp = {}
+			temp = doc
+			res.render("index", {temp} )
+		}
 	});
 
 
