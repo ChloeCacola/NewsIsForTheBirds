@@ -2,7 +2,7 @@
 <ul class="articleinfo">
   {{#each titles}}
   	<li>
-  		<p>{{title}}</p>
+  		<p id="articleTitle" data-id="{{_id}}">{{title}}</p>
   		<p>Comments: <br>{{#each comments}}<br>{{date}}<br>{{comment}}<button class="delCom" data-id="{{_id}}">X</button><br>{{/each}}<br>
 
   		<button class="addCom" data-id="{{_id}}">add comment</button>

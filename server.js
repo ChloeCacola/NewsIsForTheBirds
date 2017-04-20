@@ -128,10 +128,29 @@ app.post("/submit/:id", function(req, res) {
 	});
 		}
 	});
-	// res.redirect("/");
 });
 
+//delete a comment
+app.post("/delete/:id", function(req, res) {
+	console.log(req.body._id);
 
+	//delete comment from article
+	Article.update({"_id": req.params.id}, {$pullAll: {"comments": [req.body._id]}}, function(err, doc) {
+		if(err) {
+			res.send(err);
+		}
+	});
+
+	//delete comment entirely
+	Comment.findByIdAndRemove(req.body._id, function(err, doc) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+			res.send(doc);
+		}
+	});
+});
 
 
 

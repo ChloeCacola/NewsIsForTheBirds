@@ -41,15 +41,32 @@ $("#getNews").on("click", function(){
   	// });
 
   });
-  
-  //control what is submitted..
-  // $.post("/submit", )
 
-  //When user clicks on <span> x, close the modal
-  // $(document).on("click", "span", function() {
-  //   modal.style.display = "none";
-  // });
+ //delete a comment
+ $(document).on("click", ".delCom", function(e) {
+ 	//prevent form from submitting
+ 	// e.preventDefault();
+ 	//article id
+ 	var articleId = $("#articleTitle").attr("data-id");
+ 	//comment id
+ 	var thisId = $(this).attr("data-id");
 
+ 	console.log(articleId);
+ 	console.log(thisId);
+
+ 	$.ajax({
+ 		method: "POST",
+ 		url: "/delete/" + articleId,
+ 		body: {
+ 			_id: thisId
+ 		}
+ 	}).done(function() {
+ 		console.log("deleted");
+ 	});
+
+ });
+
+//close the comment modal
   $(".close").on("click", function() {
   	$(".modal").hide();
   })
