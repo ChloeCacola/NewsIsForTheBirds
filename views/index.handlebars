@@ -5,7 +5,7 @@
 		<button id="getNews" href="/mynews">Get my news.</button>
 	</h2>
 
-	<p id="ref">Articles scraped from Audubon.org with <a href="https://www.npmjs.com/package/cheerio">Cheerio</a></p>
+	<p id="ref">Articles scraped from Audubon.org with <a id="cheeriolink" href="https://www.npmjs.com/package/cheerio">Cheerio</a></p>
 </container>
 
 <ul id="articleinfo">
@@ -32,7 +32,7 @@
 		  <form action="/submit/{{_id}}" method="post">
 		    {{!-- <h3>Opinion?</h3> --}}
 		    <h5>Comment..</h5>
-		      <textarea type="text" name="comment" id="comment-body"></textarea>
+		      <textarea type="text" name="comment" id="comment-modal-body"></textarea>
 		      <br>
 		      <button type="submit" class="subBtn" data-id="{{_id}}">Comment</button></p>
 		  </form>

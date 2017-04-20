@@ -77,7 +77,7 @@ app.get("/", function(req, res) {
 
 	scrape();
 
-		//find all articles
+	//find all articles; sort alphabetically
 	Article.find({}).sort({"title": 1}).exec(function(error, doc) {
 		if(error) {
 			console.log(error);
