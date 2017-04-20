@@ -62,6 +62,7 @@ $("#getNews").on("click", function(){
  		}
  	}).done(function() {
  		console.log("deleted");
+ 		location.href="/";
  	});
 
  });
