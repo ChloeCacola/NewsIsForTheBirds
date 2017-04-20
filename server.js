@@ -14,7 +14,7 @@ var User = require('./models/User.js');
 var scrape = require("./controllers/scrape.js");
 
 //port
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 //titles
 var titles={};
@@ -37,9 +37,16 @@ app.set("view engine", "handlebars");
 //public folder
 app.use(express.static("public"));
 
-
 //db config with mongoose
-mongoose.connect("mongodb://localhost/forthebirds");
+//local db
+var databaseURI = "mongodb://localhost/forthebirds";
+if(process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI);
+} 
+else {
+	mongoose.connect(databaseURI);
+}
+//end db config
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
