@@ -1,0 +1,48 @@
+<h1> Is News Just for the Birds? </h1>
+
+<container id="side-content">
+  <h2> Maybe in this case..<br>
+   <button id="getNews">Get my news.</button>
+
+  </h2>
+
+<p id="ref">Articles scraped from Audubon.org with <a id="cheeriolink" href="https://www.npmjs.com/package/cheerio">Cheerio</a></p>
+</container>
+
+<ul id="articleinfo">
+  {{#each titles}}
+  	<li>
+  		<h3 id="articleTitle" data-id="{{_id}}"><a href={{url}}>{{title}}</a></h3>
+  		<h4 id="commentsTitle">Comments</h4> 
+  		<br>
+
+  			{{#each comments}}
+  			<div id="comment-body">
+  			<button class="delCom" data-id="{{_id}}">X</button>
+  			<p id="date">{{date}}</p>
+  			<p id="comment">{{comment}}</p>
+  			
+  			</div>
+  			{{/each}}<br>
+
+  		<button class="addCom" data-id="{{_id}}">add comment</button>
+
+  		<div class="modal" data-target="{{_id}}">
+		 <div class="modal-content">
+		  <span class="close">&times;</span>
+		  <form action="/submit/{{_id}}" method="post">
+		    {{!-- <h3>Opinion?</h3> --}}
+		    <h5>Comment..</h5>
+		      <textarea type="text" name="comment" id="comment-modal-body"></textarea>
+		      <br>
+		      <button type="submit" class="subBtn" data-id="{{_id}}">Comment</button></p>
+		  </form>
+		 </div>
+		</div>{{!-- end modal --}}
+  	</li>
+  {{/each}}
+</ul>
+
+
+
+<script src="/js/app.js"></script>

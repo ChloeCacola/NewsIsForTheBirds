@@ -77,7 +77,11 @@ app.get("/", function(req, res) {
 
 	scrape();
 
-	//find all articles; sort alphabetically
+res.render("index");
+	});
+
+app.get("/mynews", function(req, res) {
+		//find all articles; sort alphabetically
 	Article.find({}).sort({"title": 1}).exec(function(error, doc) {
 		if(error) {
 			console.log(error);
@@ -94,11 +98,9 @@ app.get("/", function(req, res) {
 		}
 		else {
 			titles = doc
-			res.render("index", {titles});
+			res.render("mynews", {titles});
 		}
-	});
-
-
+});
 
 		
 	});
@@ -121,7 +123,7 @@ app.post("/submit/:id", function(req, res) {
 						res.send(err);
 					}
 					else {
-						res.redirect("/");
+						res.redirect("/mynews");
 							//get new article comments..
 							Article.find({}, function(error, doc) {
 							if(error) {
@@ -146,7 +148,7 @@ app.post("/delete/:id", function(req, res) {
 	//delete comment from article
 	Article.update({"_id": req.params.id}, {$pullAll: {"comments": [req.body._id]}}, function(err, doc) {
 		if(err) {
-			res.send(err);
+			console.log(err)
 		}
 	});
 

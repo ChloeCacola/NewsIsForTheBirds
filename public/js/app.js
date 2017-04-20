@@ -1,14 +1,14 @@
 // var modal = document.querySelector(".modal");
 
 
-$("#articleinfo").hide();
+// $("#articleinfo").hide();
 
 //show the news
-$("#getNews").on("click", function(){
-	$("#articleinfo").show();
-	console.log("clicked");
-
-	});
+// $("#getNews").on("click", function(){
+// 	// $("#articleinfo").show();
+// 	// console.log("clicked");
+// location.href="/mynews"
+// 	});
 
 
 
@@ -41,7 +41,7 @@ $(".addCom").on("click", function() {
  		}
  	}).done(function() {
  		console.log("deleted");
- 		location.href="/"
+ 		location.href="/mynews"
  	});
 
  });
