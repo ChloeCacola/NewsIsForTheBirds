@@ -57,7 +57,7 @@ $("#getNews").on("click", function(){
  	$.ajax({
  		method: "POST",
  		url: "/delete/" + articleId,
- 		body: {
+ 		data: {
  			_id: thisId
  		}
  	}).done(function() {
