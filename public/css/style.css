@@ -1,11 +1,11 @@
 /*google fonts*/
-@import url('https://fonts.googleapis.com/css?family=Barrio|Cinzel|Cinzel+Decorative|Fredericka+the+Great|League+Script|Love+Ya+Like+A+Sister|Monoton|Special+Elite|Text+Me+One');
+@import url('https://fonts.googleapis.com/css?family=Barrio|Cinzel|Cinzel+Decorative|Fredericka+the+Great|League+Script|Love+Ya+Like+A+Sister|Monoton|Special+Elite|Text+Me+One|Fredericka+the+Great|Advent+Pro|Quattrocento');
 
 body {
     opacity: .97; 
     background-image: url("../images/birds.png");
     background-repeat: no-repeat;
-    background-color: #fee;
+    background-color: #d8edc8;
 
 }
 
@@ -79,16 +79,20 @@ h5 {
 }
 
 h1 {
-     font-family: 'Cinzel', serif;
+     font-family: 'Fredericka the Great', serif;
      position: absolute;
      top: 1%;
      left: 1%;
-     color: #111;
+     color: #04080b;
      font-size: 50px;
+     font-weight: 400;
 }
 
 h2 {
-    font-family: 'Text Me One', serif;
+    font-family: 'Advent Pro', serif;
+    color: #1d262d;
+    font-weight: 400;
+    letter-spacing: .025em;
 }
 
 p {
@@ -100,14 +104,18 @@ ul {
 }
 
 li{
-    border: solid 4px #3c3639;
+   /* border: solid 2px #3c3639;*/
+    border-radius: 2px;
     margin: 20px;
-    background: #8e8b85;
+    background: #f8fdfd;
+    width: 33%;
+    height: 350px;
+    float: left;
 }
 
 a {
     text-decoration: none;
-    color: #fff5fe;
+    color: #1d262d;
 }
 
 #cheeriolink {
@@ -126,12 +134,13 @@ a {
 }
 
 #articleTitle {
-    font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Quattrocento', cursive;
     font-size: 25px;
+    font-weight: 500;
     margin: 10px;
-    margin-bottom: 0px;
-    color: #fff5fe;
-}
+    margin-bottom: 20px;
+    color: #1d262d;
+    }
 
 #side-content {
 
@@ -146,7 +155,7 @@ a {
 }
 
 #getNews {
-    background-color: #111;
+    background-color: #1d262d;
     border: none;
     color: #eee;
     font-family: 'Barrio', serif;
@@ -158,8 +167,11 @@ a {
     cursor: pointer;
 }
 
+#getNews:focus {
+    color: #f9d573;
+}
+
 #commentsTitle {
-    background: #3c3639;
     letter-spacing: 0.1em;
     color: #eee;
     padding: 5px;
@@ -195,9 +207,8 @@ a {
 }
 
 .addCom {
-    background-color: #3c3639;
     border: none;
-    color: #eee;
+    color: #2b2f23;
     font-family: 'Barrio', serif;
     padding: 10px;
     text-align: center;
@@ -206,7 +217,7 @@ a {
     margin: 2px;
     cursor: pointer;
     margin-bottom: 10px;
-    box-shadow: 2px 2px 2px #fff;
+    background-color: transparent;
 }
 
 .delCom {
