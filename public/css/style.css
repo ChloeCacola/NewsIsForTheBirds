@@ -197,6 +197,7 @@ a {
 }
 
 #comment-body {
+    overflow: auto;
     border: dashed 1px #fee;
     width: 80%;
     position: relative;
