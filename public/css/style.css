@@ -105,10 +105,10 @@ ul {
 
 li{
     border-radius: 2px;
-    margin: 20px;
+    margin: 25px;
     background: #f8fdfd;
-    width: 33%;
-    height: 350px;
+    width: 36%;
+    height: 400px;
     float: left;
 }
 
@@ -118,7 +118,10 @@ a {
 }
 
 #cheeriolink {
-    color: #3c3639;
+    color: #f9d573;
+   -webkit-text-fill-color: #1d262d; /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: 0.05px;
+   -webkit-text-stroke-color: #f9d573;
     font-weight: bold;
 }
 
@@ -126,7 +129,7 @@ a {
     
     position: absolute;
     top: 20%;
-    left: 25%;
+    left: 33%;
     width: 65%;
     text-align: center;
 
@@ -135,11 +138,22 @@ a {
 #articleTitle {
     font-family: 'Quattrocento', cursive;
     font-size: 25px;
+    height: 27%;
     font-weight: 500;
     margin: 10px;
+    padding: 5px;
+    padding-bottom: 0px;
     margin-bottom: 20px;
     color: #1d262d;
     }
+
+#hr1 {
+    width: 80%;
+}
+
+#hr2 {
+    width: 70%;
+}
 
 #side-content {
 
@@ -172,68 +186,80 @@ a {
 
 #commentsTitle {
     letter-spacing: 0.1em;
-    color: #eee;
-    padding: 5px;
-    font-family: 'Barrio', serif;
-    font-size: 16px;
-    margin-top: 20px;
+    color: #586879;
+    padding: 0px;
+    font-family: 'Advent Pro', serif;
+    font-size: 18px;
+    margin-top: 10px;
     margin-bottom: 0px;
+    font-weight: 300;
+}
+
+#hr3 {
+    width: 50%;
 }
 
 #comment, #date {
-    font-size: 18px;
+    font-size: 15px;
     margin: 0px;
     text-align: center;
 }
 
 #comment {
-    font-weight: bolder;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 20px;
     color: #3c3639;
+    margin-top: 5px;
 }
 #date {
     color: #777;
 }
 
 #comment-body {
-    border: dashed 1px #fee;
     width: 80%;
-    position: relative;
-    left: 10%;
-    padding-bottom: 15px;
+    padding-top: 0px;
+    padding-bottom: 10px;
     margin: 5px;
-    background: #fff;
-    height: 100px;
+    margin-left: 8%;
+    text-align: center;
 }
 
 #comment-section {
-    height: 120px;
+    height: 150px;
     overflow: auto;
+    text-align: center;
 }
 
 .addCom {
     border: none;
     color: #2b2f23;
-    font-family: 'Barrio', serif;
+    font-family: 'Advent Pro', serif;
+    font-weight: 600;
     padding: 10px;
+    padding-bottom: 0px;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 0.1em;
     margin: 2px;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     background-color: transparent;
+    position: relative;
+    bottom: 5%;
 }
 
 .delCom {
     background: none;
     border: none;
-    color: red;
+    color: #04080b;
     font-weight: bolder;
-    font-family: 'Barrio', serif;
+    font-family: 'Advent Pro', serif;
     text-align: center;
-    font-size: 15px;
-    margin: 2px;
+    font-size: 14px;
+    margin: 0px;
+    margin-top: 10%;
+    padding: 0px;
     cursor: pointer;
     float: left;
+    letter-spacing: 0.05em;
 }

@@ -13,16 +13,17 @@
   {{#each titles}}
   	<li>
   		<h3 id="articleTitle" data-id="{{_id}}"><a href={{url}}>{{title}}</a></h3>
-      <hr/>
-      <hr/>
+      <hr id="hr1"/>
+      <hr id="hr2"/>
 
-      <div id="comment-section">
-      
     		<h4 id="commentsTitle">Comments</h4> 
+        <hr id="hr3"/>
+
+        <div id="comment-section">
     		<br>
     			{{#each comments}}
       			<div id="comment-body">
-      			<button class="delCom" data-id="{{_id}}">X</button>
+      			<button class="delCom" data-id="{{_id}}">del</button>
       			<p id="date">{{date}}</p>
       			<p id="comment">{{comment}}</p>
       			
@@ -30,10 +31,10 @@
     			{{/each}}
 
           <br>
-
-    		<button class="addCom" data-id="{{_id}}">add comment</button>
         
       </div><!--comment section-->
+
+      <button class="addCom" data-id="{{_id}}">add comment</button>
 
   		<div class="modal" data-target="{{_id}}">
 		 <div class="modal-content">
