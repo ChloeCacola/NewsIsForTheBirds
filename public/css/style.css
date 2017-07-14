@@ -132,7 +132,13 @@ a {
     left: 33%;
     width: 65%;
     text-align: center;
+    height: 600px;
+    overflow: auto;
 
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 #articleTitle {
