@@ -15,19 +15,25 @@
   		<h3 id="articleTitle" data-id="{{_id}}"><a href={{url}}>{{title}}</a></h3>
       <hr/>
       <hr/>
-  		<h4 id="commentsTitle">Comments</h4> 
-  		<br>
 
-  			{{#each comments}}
-  			<div id="comment-body">
-  			<button class="delCom" data-id="{{_id}}">X</button>
-  			<p id="date">{{date}}</p>
-  			<p id="comment">{{comment}}</p>
-  			
-  			</div>
-  			{{/each}}<br>
+      <div id="comment-section">
+      
+    		<h4 id="commentsTitle">Comments</h4> 
+    		<br>
+    			{{#each comments}}
+      			<div id="comment-body">
+      			<button class="delCom" data-id="{{_id}}">X</button>
+      			<p id="date">{{date}}</p>
+      			<p id="comment">{{comment}}</p>
+      			
+      			</div>
+    			{{/each}}
 
-  		<button class="addCom" data-id="{{_id}}">add comment</button>
+          <br>
+
+    		<button class="addCom" data-id="{{_id}}">add comment</button>
+        
+      </div><!--comment section-->
 
   		<div class="modal" data-target="{{_id}}">
 		 <div class="modal-content">

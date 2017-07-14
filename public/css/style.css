@@ -104,7 +104,6 @@ ul {
 }
 
 li{
-   /* border: solid 2px #3c3639;*/
     border-radius: 2px;
     margin: 20px;
     background: #f8fdfd;
@@ -197,7 +196,6 @@ a {
 }
 
 #comment-body {
-    overflow: auto;
     border: dashed 1px #fee;
     width: 80%;
     position: relative;
@@ -205,6 +203,12 @@ a {
     padding-bottom: 15px;
     margin: 5px;
     background: #fff;
+    height: 100px;
+}
+
+#comment-section {
+    height: 120px;
+    overflow: auto;
 }
 
 .addCom {
